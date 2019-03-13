@@ -51,9 +51,9 @@ describe 'ActiveRecord Obstacle Course' do
 
   it '1. finds orders by amount' do
     # ----------------------- Using Ruby -------------------------
-    orders_of_500 = Order.all.select { |order| order.amount == 500 }
-    orders_of_200 = Order.all.select { |order| order.amount == 200 }
-    # ------------------------------------------------------------
+    # orders_of_500 = Order.all.select { |order| order.amount == 500 }
+    # orders_of_200 = Order.all.select { |order| order.amount == 200 }
+    # # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
      orders_of_500 = Order.where(amount: 500)
@@ -67,12 +67,11 @@ describe 'ActiveRecord Obstacle Course' do
 
   it '2. finds order id of smallest order' do
     # ----------------------- Using Raw SQL ----------------------
-    order_id = ActiveRecord::Base.connection.execute('SELECT id FROM orders ORDER BY amount ASC LIMIT 1').first['id']
+    # order_id = ActiveRecord::Base.connection.execute('SELECT id FROM orders ORDER BY amount ASC LIMIT 1').first['id']
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
-    # Your solution should not contain the ID of the order anywhere
+    order_id = Order.order(amount: :asc).first.id
     # ------------------------------------------------------------
 
     # Expectation
