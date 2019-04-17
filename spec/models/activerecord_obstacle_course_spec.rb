@@ -84,7 +84,7 @@ describe 'ActiveRecord Obstacle Course' do
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    order_id = Order.select(:id).order(amount: :desc).pluck(:id).first
+    order_id = Order.order(amount: :desc).first.id
     # ------------------------------------------------------------
 
     # Expectation
@@ -285,7 +285,7 @@ describe 'ActiveRecord Obstacle Course' do
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    names = Item.all.pluck(:name)
+    names = Item.pluck(:name)
     # ------------------------------------------------------------
 
     # Expectation
